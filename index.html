@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una Navidad contigo ❤️ | Six Flags</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
+
+        :root {
+            --red: #c51225;
+            --red-dark: #790b17;
+            --green: #08743d;
+            --green-dark: #043c25;
+            --gold: #f8d56b;
+            --cream: #fff5d5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            background:
+                radial-gradient(ellipse at top, #17623c 0%, transparent 55%),
+                linear-gradient(145deg, #041e16, #062d20 55%, #110b12);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* FONDO NAVIDEÑO */
+
+        .snow {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -20px;
+            color: white;
+            opacity: .8;
+            animation: snowFall linear infinite;
+            text-shadow: 0 0 8px white;
+        }
+
+        @keyframes snowFall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        /* LUCES */
+
+        .lights {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 13px 5px;
+            z-index: 20;
+            pointer-events: none;
+        }
+
+        .bulb {
+            width: 13px;
+            height: 20px;
+            border-radius: 50%;
+            animation: glow 1s infinite alternate;
+            box-shadow: 0 0 14px currentColor;
+        }
+
+        .bulb:nth-child(4n+1) {
+            color: #ff3434;
+            background: #ff3434;
+        }
+
+        .bulb:nth-child(4n+2) {
+            color: #fbd65d;
+            background: #fbd65d;
+        }
+
+        .bulb:nth-child(4n+3) {
+            color: #36e889;
+            background: #36e889;
+        }
+
+        .bulb:nth-child(4n+4) {
+            color: #54bfff;
+            background: #54bfff;
+        }
+
+        @keyframes glow {
+            from {
+                opacity: .55;
+                filter: brightness(.8);
+            }
+
+            to {
+                opacity: 1;
+                filter: brightness(1.5);
+            }
+        }
+
+        /* CONTENEDOR */
+
+        .container {
+            width: min(92%, 720px);
+            margin: 65px auto 35px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card {
+            position: relative;
+            padding: 30px 25px 35px;
+            border-radius: 30px;
+            background: linear-gradient(150deg, #fff9e7, #ffe7a4);
+            color: #4c1720;
+            border: 5px solid var(--gold);
+            box-shadow:
+                0 0 0 5px #08743d,
+                0 0 35px rgba(255, 204, 71, .45),
+                0 20px 60px rgba(0, 0, 0, .5);
+            overflow: hidden;
+        }
+
+        .card::before,
+        .card::after {
+            content: "✦";
+            position: absolute;
+            color: #e4b842;
+            font-size: 65px;
+            opacity: .22;
+        }
+
+        .card::before {
+            top: 20px;
+            left: 15px;
+        }
+
+        .card::after {
+            bottom: 15px;
+            right: 15px;
+        }
+
+        /* LOGO */
+
+        .logo {
+            width: min(90%, 420px);
+            max-height: 210px;
+            object-fit: contain;
+            margin: -5px auto 5px;
+            display: block;
+            mix-blend-mode: multiply;
+        }
+
+        .eyebrow {
+            color: #a20d20;
+            font-weight: 800;
+            letter-spacing: 4px;
+            font-size: 11px;
+            margin: 5px 0 14px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(30px, 6vw, 48px);
+            line-height: 1.15;
+            color: #a30e20;
+            text-shadow: 2px 3px 0 #f6d778;
+            margin-bottom: 12px;
+        }
+
+        .script {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(32px, 6vw, 43px);
+            color: #08743d;
+            margin: 8px 0 15px;
+        }
+
+        .description {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #63413a;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* FECHA */
+
+        .date-box {
+            margin: 24px auto;
+            padding: 17px;
+            max-width: 390px;
+            border-radius: 17px;
+            color: white;
+            background: linear-gradient(135deg, #9c1020, #d51e30);
+            border: 2px solid #f3ca65;
+            box-shadow: 0 6px 16px #8b182b44;
+        }
+
+        .date-box .date-title {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: #ffdf88;
+        }
+
+        .date-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 27px;
+            margin: 7px 0;
+        }
+
+        .date-box p {
+            font-size: 12px;
+            opacity: .9;
+        }
+
+        /* BOTONES */
+
+        .question {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: #790b17;
+            margin-top: 25px;
+        }
+
+        .buttons-area {
+            position: relative;
+            height: 100px;
+            max-width: 420px;
+            margin: 15px auto 0;
+        }
+
+        .btn {
+            position: absolute;
+            top: 15px;
+            border: none;
+            padding: 16px 27px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform .2s, box-shadow .2s;
+            white-space: nowrap;
+            touch-action: manipulation;
+        }
+
+        #yes {
+            left: 7%;
+            color: white;
+            background: linear-gradient(135deg, #078a49, #04542e);
+            box-shadow: 0 6px 0 #033b22, 0 8px 20px #08743d55;
+        }
+
+        #yes:hover {
+            transform: scale(1.09);
+            box-shadow: 0 0 25px #16bd71;
+        }
+
+        #no {
+            left: 58%;
+            color: white;
+            background: linear-gradient(135deg, #d71932, #8b0718);
+            box-shadow: 0 6px 0 #670817;
+            z-index: 5;
+        }
+
+        /* CALENDARIO */
+
+        .calendar-btn {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #e8bd4b, #bd8521);
+            color: #4c2605;
+            font-weight: 900;
+            font-size: 12px;
+            text-decoration: none;
+            border-radius: 30px;
+            border: 2px solid #fff0b2;
+            box-shadow: 0 5px 15px #a9792855;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .calendar-btn:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.1);
+        }
+
+        .footer {
+            margin-top: 25px;
+            color: #fff1bf;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        /* DECORACIONES */
+
+        .decoration {
+            position: absolute;
+            font-size: 27px;
+            animation: float 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .d1 {
+            top: 18px;
+            right: 20px;
+        }
+
+        .d2 {
+            top: 150px;
+            left: 12px;
+            animation-delay: .8s;
+        }
+
+        .d3 {
+            bottom: 25px;
+            left: 22px;
+            animation-delay: 1.3s;
+        }
+
+        @keyframes float {
+            50% {
+                transform: translateY(-10px) rotate(8deg);
+            }
+        }
+
+        /* MENSAJE FINAL */
+
+        #success {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            background: rgba(2, 20, 12, .94);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .success-content {
+            max-width: 480px;
+            padding: 35px 25px;
+            border-radius: 25px;
+            background: linear-gradient(145deg, #fff4d1, #f8d477);
+            color: #841020;
+            border: 5px solid #08743d;
+            box-shadow: 0 0 40px #e8c25b66;
+            animation: appear .7s ease;
+        }
+
+        @keyframes appear {
+            from {
+                transform: scale(.6);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-content h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 48px;
+            margin: 12px 0;
+        }
+
+        .success-content p {
+            line-height: 1.8;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .heart {
+            font-size: 55px;
+            animation: heartbeat 1s infinite;
+        }
+
+        @keyframes heartbeat {
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            padding: 15px 25px;
+            border-radius: 30px;
+            color: white;
+            background: #168b4d;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        @media(max-width:480px) {
+            .container {
+                margin-top: 60px;
+            }
+
+            .card {
+                padding: 25px 14px 30px;
+            }
+
+            .logo {
+                max-height: 155px;
+            }
+
+            .buttons-area {
+                height: 105px;
+            }
+
+            .btn {
+                padding: 14px 20px;
+                font-size: 12px;
+            }
+
+            #yes {
+                left: 2%;
+            }
+
+            #no {
+                left: 57%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="lights" id="lights"></div>
+    <div class="snow" id="snow"></div>
+
+    <main class="container">
+
+        <section class="card">
+
+            <span class="decoration d1">🎄</span>
+            <span class="decoration d2">❄️</span>
+            <span class="decoration d3">🎁</span>
+
+            <img src="sixflags-christmas.webp" class="logo" alt="Six Flags Christmas in the Park">
+
+            <div class="eyebrow">✨ UNA INVITACIÓN MUY ESPECIAL ✨</div>
+
+            <h1>Esta Navidad...</h1>
+
+            <div class="script">quiero compartir algo contigo ❤️</div>
+
+            <p class="description">
+                Hay muchos lugares a donde podemos ir,
+                pero yo tengo uno especial en mente...
+                <br><br>
+                Quiero vivir una noche llena de luces,
+                magia, diversión y momentos bonitos.
+                <br>
+                ¡Y qué mejor que hacerlo contigo!
+            </p>
+
+            <div class="date-box">
+                <div class="date-title">🎄 TENEMOS UNA CITA 🎄</div>
+                <h2>13 de Diciembre</h2>
+                <p>DOMINGO · 2026</p>
+                <p>❄️ Six Flags Christmas in the Park ❄️</p>
+            </div>
+
+            <h2 class="question">
+                ¿Quieres ir conmigo? 🥺❤️
+            </h2>
+
+            <div class="buttons-area" id="buttonsArea">
+
+                <button class="btn" id="yes">
+                    ¡SÍ, QUIERO! ❤️
+                </button>
+
+                <button class="btn" id="no">
+                    No 🙈
+                </button>
+
+            </div>
+
+            <button class="calendar-btn" id="calendar">
+                📅 AGREGAR A MI CALENDARIO
+            </button>
+
+            <div class="footer">
+                ✨ Una noche mágica, muchas luces y una persona especial. ✨
+                <br>
+                Hecho con mucho cariño ❤️
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- PANTALLA DE ACEPTACIÓN -->
+
+    <div id="success">
+        <div class="success-content">
+
+            <div class="heart">❤️</div>
+
+            <h2>¡Sabía que dirías que sí!</h2>
+
+            <p>
+                ¡Entonces tenemos una cita! 🥰
+                <br><br>
+                Prepárate para una noche llena de luces,
+                magia, diversión y muchos recuerdos juntos.
+                <br><br>
+                ¡No puedo esperar para ir contigo, mi amor! 🎄
+            </p>
+
+            <a class="whatsapp-btn" id="whatsapp" target="_blank">
+                💌 Confirmar por WhatsApp
+            </a>
+
+        </div>
+    </div>
+
+    <script>
+
+        // LUCES NAVIDEÑAS
+        const lights = document.getElementById('lights');
+
+        for (let i = 0; i < 35; i++) {
+            const bulb = document.createElement('div');
+            bulb.className = 'bulb';
+            bulb.style.animationDelay = Math.random() + 's';
+            lights.appendChild(bulb);
+        }
+
+        // NIEVE
+        const snow = document.getElementById('snow');
+
+        for (let i = 0; i < 65; i++) {
+            const flake = document.createElement('div');
+            flake.className = 'snowflake';
+            flake.innerHTML = Math.random() > .5 ? '❄' : '✦';
+            flake.style.left = Math.random() * 100 + '%';
+            flake.style.fontSize = (Math.random() * 12 + 8) + 'px';
+            flake.style.animationDuration = (Math.random() * 7 + 5) + 's';
+            flake.style.animationDelay = Math.random() * 8 + 's';
+            snow.appendChild(flake);
+        }
+
+        // BOTÓN NO: SIEMPRE ESCAPA
+        const no = document.getElementById('no');
+        const area = document.getElementById('buttonsArea');
+
+        function moveNo() {
+
+            const areaRect = area.getBoundingClientRect();
+
+            const maxX = Math.max(0, area.clientWidth - no.offsetWidth);
+            const maxY = Math.max(0, area.clientHeight - no.offsetHeight);
+
+            let x, y;
+
+            // Busca una posición suficientemente alejada del botón SÍ
+            for (let i = 0; i < 30; i++) {
+                x = Math.random() * maxX;
+                y = Math.random() * maxY;
+
+                const yesRect = document.getElementById('yes').getBoundingClientRect();
+
+                const candidate = {
+                    left: areaRect.left + x,
+                    right: areaRect.left + x + no.offsetWidth,
+                    top: areaRect.top + y,
+                    bottom: areaRect.top + y + no.offsetHeight
+                };
+
+                const overlaps =
+                    candidate.left < yesRect.right + 12 &&
+                    candidate.right > yesRect.left - 12 &&
+                    candidate.top < yesRect.bottom + 12 &&
+                    candidate.bottom > yesRect.top - 12;
+
+                if (!overlaps) break;
+            }
+
+            no.style.left = x + 'px';
+            no.style.top = y + 'px';
+        }
+
+        // Escapa al acercar el cursor
+        no.addEventListener('pointerenter', moveNo);
+
+        // También escapa si el cursor se aproxima
+        area.addEventListener('pointermove', (e) => {
+            const rect = no.getBoundingClientRect();
+
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            const distance = Math.hypot(
+                e.clientX - centerX,
+                e.clientY - centerY
+            );
+
+            if (distance < 65) {
+                moveNo();
+            }
+        });
+
+        // En móviles
+        no.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveNo();
+        }, {passive: false});
+
+        no.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveNo();
+        });
+
+        // BOTÓN SÍ
+        document.getElementById('yes').addEventListener('click', () => {
+
+            document.getElementById('success').style.display = 'flex';
+
+            const phone = '522381445102';
+            const message = 'Si quiero ir contigo mi amor <3';
+
+            const whatsappURL =
+                'https://wa.me/' + phone + '?text=' +
+                encodeURIComponent(message);
+
+            document.getElementById('whatsapp').href = whatsappURL;
+
+            // Abrir WhatsApp
+            window.open(whatsappURL, '_blank');
+
+        });
+
+        // AGREGAR AL CALENDARIO
+        document.getElementById('calendar').addEventListener('click', () => {
+
+            const event = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//Invitacion Navidena//Six Flags//ES',
+                'CALSCALE:GREGORIAN',
+                'BEGIN:VEVENT',
+                'UID:sixflags-christmas-20261213@invitacion.local',
+                'DTSTAMP:20261117T000000Z',
+                'DTSTART;VALUE=DATE:20261213',
+                'DTEND;VALUE=DATE:20261214',
+                'SUMMARY:Six Flags Christmas in the Park ❤️',
+                'DESCRIPTION:Una noche mágica de Navidad juntos. 🎄❤️',
+                'LOCATION:Six Flags México',
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ].join('\r\n');
+
+            const blob = new Blob([event], {
+                type: 'text/calendar;charset=utf-8'
+            });
+
+            const url = URL.createObjectURL(blob);
+
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Nuestra-cita-Six-Flags.ics';
+
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+
+            setTimeout(() => URL.revokeObjectURL(url), 2000);
+
+        });
+
+    </script>
+
+</body>
+
+</html>
